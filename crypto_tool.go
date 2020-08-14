@@ -1,7 +1,6 @@
 package main
 
 import (
-  //"flag"
   "bytes"
   "crypto/cipher"
   "crypto/des"
@@ -12,7 +11,6 @@ import (
   "crypto/md5"
   "encoding/hex"
   "encoding/json"
-  
 )
 
 func md5V(str string) string  {
@@ -29,7 +27,6 @@ type AuthorizecodeJson struct {
 
 
 func main() {
-  //args
   if len(os.Args) < 5 {
     fmt.Println("Usage：" + os.Args[0] + "autotime company md5info deskey")
     return
@@ -58,7 +55,8 @@ func main() {
   }
   
 //将传入的info做一个md5转换   
-  md5info := md5V(info)
+  fmt.Println(company +  dutotime + info)
+  md5info := md5V(company + dutotime + info)
   fmt.Println("md5:" + md5info)
   
 //将截至时间、公司名称、info组成一个json字符串然后做一个des转换
@@ -73,13 +71,7 @@ func main() {
 //再对字符串做一个DES转换
   Enc_str := EncryptDES_ECB(authorizecodeJsonStr, deskey)
   fmt.Println("使用DSE的ECB加密后结果：" + Enc_str)
-
-  
-  
-  
-  
 }
-
 
 //CBC加密
 func EncryptDES_CBC(src, key string) string {
@@ -182,6 +174,4 @@ func PKCS5UnPadding(origData []byte) []byte {
    unpadding := int(origData[length-1])
    return origData[:(length - unpadding)]
 }
-
-
 
