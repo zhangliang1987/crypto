@@ -53,9 +53,9 @@ func main() {
     return 
   }
 
-  var info = "12345678"
+  var info = "xietingfeng"
   
-  deskey := "12345678"
+  deskey := "xuzhengz"
   if !IsLetter(deskey) {
     fmt.Println("DES的密钥必须是一个字母或者数字")
     return
