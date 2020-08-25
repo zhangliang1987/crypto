@@ -27,8 +27,10 @@ type AuthorizecodeJson struct {
 
 
 func main() {
-  if len(os.Args) < 5 {
-    fmt.Println("Usage：" + os.Args[0] + "autotime company md5info deskey")
+  if len(os.Args) < 3 {
+    fmt.Println("Usage：" + os.Args[0] + " autotime company")
+    fmt.Println("Example：" + os.Args[0] + " 2002-03-01 loongson")
+    
     return
   }
 
@@ -45,10 +47,15 @@ func main() {
     fmt.Println("公司名称必须是字母或者数字")
     return
   }
-
-  var info = os.Args[3]
   
-  deskey := os.Args[4]
+  if len(company) >= 16 {
+    fmt.Println("公司名称长度必须是小于等于16")
+    return 
+  }
+
+  var info = "12345678"
+  
+  deskey := "12345678"
   if !IsLetter(deskey) {
     fmt.Println("DES的密钥必须是一个字母或者数字")
     return
